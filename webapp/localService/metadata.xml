@@ -1,0 +1,31 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="http://10.145.149.226:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z007_FLIG_CDS" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="Z007_FLIGType" sap:label="Flight Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="carrid"/>
+                </Key>
+                <Property Name="carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Carrier"/>
+                <Property Name="connid" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="connid"/>
+                <Property Name="fldate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="fldate"/>
+                <Property Name="planetype" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Plane Type"/>
+                <Property Name="currency" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:quickinfo="Currencyyy" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityContainer Name="Z007_FLIG_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Z007_FLIG" EntityType="Z007_FLIG_CDS.Z007_FLIGType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://10.145.149.226:8000/sap/opu/odata/sap/Z007_FLIG_CDS/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://10.145.149.226:8000/sap/opu/odata/sap/Z007_FLIG_CDS/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
